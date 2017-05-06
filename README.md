@@ -1,6 +1,6 @@
 # react-component-starter
 
-[![Build status: Linux](https://img.shields.io/travis/Alex1990/react-slingshot.svg?style=flat-square)](https://travis-ci.org/Alex1990/react-component-starter)
+[![Build status: Linux](https://img.shields.io/travis/Alex1990/react-component-starter.svg?style=flat-square)](https://travis-ci.org/Alex1990/react-component-starter)
 [![Build status: Windows](https://img.shields.io/appveyor/ci/Alex1990/react-component-starter/master.svg?style=flat-square)](https://ci.appveyor.com/project/Alex1990/react-component-starter/branch/master)
 [![Dependency Status](https://david-dm.org/Alex1990/react-component-starter.svg?style=flat-square)](https://david-dm.org/Alex1990/react-component-starter)
 [![Coverage Status](https://img.shields.io/coveralls/Alex1990/react-component-starter/master.svg?style=flat-square)](https://coveralls.io/github/Alex1990/react-component-starter?branch=master)
