@@ -6,6 +6,10 @@
   "module": "./src/index.js",
   "author": "Alex Chao",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Alex1990/react-component-starter.git"
+  },
   "scripts": {
     "start": "NODE_ENV=development node ./scripts/server",
     "compile": "rimraf lib && babel -d lib src",
@@ -58,7 +62,6 @@
     "stylus-loader": "^3.0.1",
     "url-loader": "^0.5.8",
     "webpack": "^2.4.1",
-    "webpack-dev-middleware": "^1.10.2",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
