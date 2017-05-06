@@ -1,16 +1,21 @@
 # react-component-starter
 
+[![Build status: Linux](https://img.shields.io/travis/Alex1990/react-slingshot.svg?style=flat-square)](https://travis-ci.org/Alex1990/react-component-starter)
+[![Build status: Windows](https://img.shields.io/appveyor/ci/Alex1990/react-component-starter/master.svg?style=flat-square)](https://ci.appveyor.com/project/Alex1990/react-component-starter/branch/master)
+[![Dependency Status](https://david-dm.org/Alex1990/react-component-starter.svg?style=flat-square)](https://david-dm.org/Alex1990/react-component-starter)
+[![Coverage Status](https://img.shields.io/coveralls/Alex1990/react-component-starter/master.svg?style=flat-square)](https://coveralls.io/github/Alex1990/react-component-starter?branch=master)
+
 A starter based on webpack ecosystem to develop react components comfortably.
 
 ## Features
 
 - **JavaScript**: ES2015, ES2016, ES2017, class static properties, object rest/spread operator.
-- **CSS**: CSS/SASS/LESS/Stylus/PostCSS, Autoprefixer
-- **Examples**: Easy to write examples
-- **Automatic**: Hot reloading
-- **Lint**: ESLint with airbnb's javascript styleguide
-- **Test**: With Jest and enzyme, coverage
-- **CI: travis ci, appveyor ci
+- **CSS**: CSS/SASS/LESS/Stylus/PostCSS, Autoprefixer.
+- **Examples**: Easy to write examples.
+- **Automatic**: Hot reloading.
+- **Lint**: ESLint with airbnb's javascript styleguide.
+- **Test**: With Jest and enzyme, coverage.
+- **CI: Integrate travis and appveyor.
 
 ## Scripts
 
