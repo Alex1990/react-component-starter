@@ -15,7 +15,7 @@ A starter based on webpack ecosystem to develop react components comfortably.
 - **Automatic**: Hot reloading.
 - **Lint**: ESLint with airbnb's javascript styleguide.
 - **Test**: With Jest and enzyme, coverage.
-- **CI: Integrate travis and appveyor.
+- **CI**: Integrate travis and appveyor.
 
 ## Scripts
 
