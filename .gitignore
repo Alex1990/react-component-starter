@@ -1,0 +1,9 @@
+node_modules
+lib
+dist
+build
+coverage
+.DS_Store
+*.log
+*.swp
+stats.json
