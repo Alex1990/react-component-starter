@@ -3,19 +3,15 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const util = require('./util');
 
-const env = process.env.NODE_ENV;
 const packageName = process.env.npm_package_name;
 const root = process.cwd();
-
-const dashToUpperCamelCase = (str) => {
-  return str.charAt(0).toUpperCase() +
-    str.slice(1).replace(/-[A-Za-z0-9]/g, m => m[1].toUpperCase());
-};
 
 module.exports = function (options) {
   const {
     entry,
+    env,
     task,
   } = options;
 
@@ -43,29 +39,32 @@ module.exports = function (options) {
     config.output = {
       filename: `${packageName}.js`,
       path: path.join(root, 'dist'),
-      library: packageName,
+      // Todo: can this be customized?
+      library: util.dashToUpperCamelCase(packageName),
       libraryTarget: 'umd',
     };
   }
 
-  if (task !== 'examples' && env === 'production') {
-    config.externals = {
-      react: {
-        root: 'React',
-        commonjs: 'react',
-        commonjs2: 'react',
-        amd: 'react',
-      },
-      'react-dom': {
-        root: 'ReactDOM',
-        commonjs: 'react-dom',
-        commonjs2: 'react-dom',
-        amd: 'react-dom',
-      },
-    };
+  if (env.NODE_ENV === 'production') {
+    if (task !== 'examples') {
+      config.externals = {
+        react: {
+          root: 'React',
+          commonjs: 'react',
+          commonjs2: 'react',
+          amd: 'react',
+        },
+        'react-dom': {
+          root: 'ReactDOM',
+          commonjs: 'react-dom',
+          commonjs2: 'react-dom',
+          amd: 'react-dom',
+        },
+      };
+    }
   }
 
-  if (env === 'production') {
+  if (env.NODE_ENV === 'production') {
     config.devtool = 'source-map';
   } else {
     config.devtool = 'eval-source-map';
@@ -82,7 +81,7 @@ module.exports = function (options) {
     new ProgressBarPlugin()
   );
 
-  if (env === 'production') {
+  if (env.NODE_ENV === 'production') {
     let cssFilename;
 
     if (task === 'examples') {
@@ -142,7 +141,7 @@ module.exports = function (options) {
    */
   let extractCSS;
 
-  if (env === 'production') {
+  if (env.NODE_ENV === 'production') {
     extractCSS = loaders => ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: loaders
@@ -338,7 +337,7 @@ module.exports = function (options) {
     }
   );
 
-  if (env === 'development') {
+  if (env.NODE_ENV === 'development') {
     config.devServer = {
       contentBase: path.join(__dirname, 'build'),
       hot: true,
@@ -347,7 +346,6 @@ module.exports = function (options) {
       stats: "errors-only",
     };
   }
-
 
   return config;
 };
