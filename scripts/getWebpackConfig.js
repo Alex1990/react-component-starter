@@ -345,6 +345,7 @@ module.exports = function (options) {
       hot: true,
       port: 9000,
       publicPath: '/',
+      quiet: true,
       stats: 'errors-only',
       watchOptions: {
         ignored: /node_modules/,
