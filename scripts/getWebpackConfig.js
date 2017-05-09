@@ -339,11 +339,17 @@ module.exports = function (options) {
 
   if (env.NODE_ENV === 'development') {
     config.devServer = {
+      compress: true,
+      clientLogLevel: 'none',
       contentBase: path.join(__dirname, 'build'),
       hot: true,
       port: 9000,
       publicPath: '/',
-      stats: "errors-only",
+      stats: 'errors-only',
+      watchOptions: {
+        ignored: /node_modules/,
+      },
+      overlay: true,
     };
   }
 

@@ -22,7 +22,7 @@ util.getExampleEntry()
       task: 'examples',
     });
     const { devServer = {} } = config;
-    const { host = '0.0.0.0', port = '9000' } = devServer;
+    const { host = '127.0.0.1', port = '9000' } = devServer;
     const server = new WebpackDevServer(webpack(config), devServer);
 
     server.listen(port, host);
