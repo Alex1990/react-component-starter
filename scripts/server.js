@@ -1,3 +1,4 @@
+const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
@@ -9,7 +10,10 @@ const getWebpackConfig = require('./getWebpackConfig');
 const isInteractive = process.stdout.isTTY;
 
 util.getExampleEntry()
-  .then((entry) => {
+  .then((exampleEntry) => {
+    const entry = Object.assign({
+      'examples/index': './examples/index.js',
+    }, exampleEntry);
 
     // Configure hot reloading
     for (let entryName in entry) {
@@ -26,6 +30,7 @@ util.getExampleEntry()
         NODE_ENV: process.env.NODE_ENV,
       },
       entry,
+      exampleEntry,
       task: 'examples',
     });
     const { devServer = {} } = config;
@@ -77,6 +82,8 @@ util.getExampleEntry()
     const server = new WebpackDevServer(compiler, devServer);
 
     server.listen(port, host);
-  }, (err) => {
-    throw err;
+  })
+  .catch(reason => {
+    console.log(chalk.red(reason));
+    process.exit(1);
   });

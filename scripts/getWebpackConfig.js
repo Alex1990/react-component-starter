@@ -1,4 +1,5 @@
 const path = require('path');
+const parseGithubUrl = require('parse-github-url');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -6,11 +7,15 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const util = require('./util');
 
 const packageName = process.env.npm_package_name;
+const packageVersion = process.env.npm_package_version;
+const packageRepositoryUrl = process.env.npm_package_repository_url;
+
 const root = process.cwd();
 
 module.exports = function (options) {
   const {
     entry,
+    exampleEntry,
     env,
     task,
   } = options;
@@ -73,10 +78,19 @@ module.exports = function (options) {
   /**
    * Plugins
    */
+  const re = /examples\/([^\/]+)\/index/;
+  const exampleDirs = Object.keys(exampleEntry)
+    .map(v => v.match(re)[1])
+    .sort();
+  const repo = parseGithubUrl(packageRepositoryUrl);
 
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+      exampleDirs: JSON.stringify(exampleDirs),
+      packageName: JSON.stringify(packageName),
+      packageVersion: JSON.stringify(packageVersion),
+      repository: JSON.stringify(repo.repo ? `https://github.com/${repo.repo}` : ''),
     }),
     new ProgressBarPlugin()
   );
@@ -135,6 +149,22 @@ module.exports = function (options) {
     ],
   });
 
+  /**
+   * Markdown
+   */
+  config.module.rules.push({
+    test: /\.md$/,
+    use: [
+      {
+        loader: 'html-loader',
+      },
+      {
+        loader: 'markdown-loader',
+        options: {
+        },
+      },
+    ],
+  });
 
   /**
    * CSS/LESS/SASS/SCSS/PostCSS loader
@@ -159,6 +189,7 @@ module.exports = function (options) {
           options: {
             sourceMap: true,
             minimize: false,
+            importLoaders: 0,
           },
         },
         {
