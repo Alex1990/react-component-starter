@@ -112,7 +112,7 @@ module.exports = function (options) {
       examplesHtmls.push(new HtmlWebpackPlugin({
         chunks: [entryName],
         filename: entryName + '.html',
-        template: 'examples/index.html',
+        template: 'examples/entry_template.html',
       }));
     }
     config.plugins.push(...examplesHtmls);
