@@ -44,7 +44,7 @@ module.exports = function (options) {
     config.output = {
       filename: outputFilename,
       path: path.join(root, 'build'),
-      publicPath: '/',
+      publicPath: './',
     };
   } else {
     config.output = {
@@ -381,7 +381,6 @@ module.exports = function (options) {
       contentBase: path.join(__dirname, 'build'),
       hot: true,
       port: 9000,
-      publicPath: '/',
       quiet: true,
       stats: 'errors-only',
       watchOptions: {
