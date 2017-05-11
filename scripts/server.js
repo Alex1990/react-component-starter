@@ -1,5 +1,6 @@
 const path = require('path');
 const chalk = require('chalk');
+const opn = require('opn');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
@@ -82,6 +83,7 @@ util.getExampleEntry()
     const server = new WebpackDevServer(compiler, devServer);
 
     server.listen(port, host);
+    opn(`http://${host}:${port}/examples/index.html`);
   })
   .catch(reason => {
     console.log(chalk.red(reason));
