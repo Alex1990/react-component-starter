@@ -22,6 +22,7 @@ module.exports = function (options) {
 
   const config = {
     entry,
+    context: root,
     resolve: {
       extensions: ['.js', '.jsx'],
     },
@@ -35,8 +36,13 @@ module.exports = function (options) {
   };
 
   if (task === 'examples') {
+    let outputFilename = '[name].js';
+
+    if (env.NODE_ENV === 'production') {
+      outputFilename = '[name]-[hash:16].js';
+    }
     config.output = {
-      filename: '[name].js',
+      filename: outputFilename,
       path: path.join(root, 'build'),
       publicPath: '/',
     };
@@ -78,7 +84,7 @@ module.exports = function (options) {
   /**
    * Plugins
    */
-  const re = /examples\/([^\/]+)\/index/;
+  const re = /^([^\/]+)\/index$/;
   const exampleDirs = Object.keys(exampleEntry)
     .map(v => v.match(re)[1])
     .sort();
@@ -107,7 +113,7 @@ module.exports = function (options) {
           },
         })
       );
-      cssFilename =  '[name][contenthash].css';
+      cssFilename =  '[name]-[contenthash:16].css';
     } else {
       cssFilename = `${packageName}.css`;
     }

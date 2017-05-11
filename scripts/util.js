@@ -16,9 +16,10 @@ function getExampleEntry() {
         const entry = {};
 
         files.forEach(file => {
-          const entryName = path.dirname(file) + path.sep +
-              path.basename(file, path.extname(file));
           const entryFile = '.' + path.sep + file;
+          let entryName = path.dirname(file) + path.sep +
+              path.basename(file, path.extname(file));
+          entryName = entryName.slice('examples/'.length);
           entry[entryName] = entryFile;
         });
 

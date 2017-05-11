@@ -13,7 +13,7 @@ const isInteractive = process.stdout.isTTY;
 util.getExampleEntry()
   .then((exampleEntry) => {
     const entry = Object.assign({
-      'examples/index': './examples/index.js',
+      'index': './examples/index.js',
     }, exampleEntry);
 
     // Configure hot reloading
@@ -83,9 +83,12 @@ util.getExampleEntry()
     const server = new WebpackDevServer(compiler, devServer);
 
     server.listen(port, host);
-    opn(`http://${host}:${port}/examples/index.html`);
+    opn(`http://${host}:${port}`);
   })
   .catch(reason => {
-    console.log(chalk.red(reason));
-    process.exit(1);
+    if (reason instanceof Error) {
+      console.log(chalk.red(reason.stack));
+    } else {
+      console.log(chalk.red(reason));
+    }
   });
