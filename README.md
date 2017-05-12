@@ -2,9 +2,9 @@
 
 [![Build status: Linux](https://img.shields.io/travis/Alex1990/react-ui-component-starter.svg?style=flat-square)](https://travis-ci.org/Alex1990/react-ui-component-starter)
 [![Build status: Windows](https://img.shields.io/appveyor/ci/Alex1990/react-ui-component-starter/master.svg?style=flat-square)](https://ci.appveyor.com/project/Alex1990/react-ui-component-starter/branch/master)
+[![Coverage Status](https://img.shields.io/coveralls/Alex1990/react-ui-component-starter/master.svg?style=flat-square)](https://coveralls.io/github/Alex1990/react-ui-component-starter?branch=master)
 [![Npm version](https://img.shields.io/npm/v/react-ui-component-starter.svg?style=flat)](https://www.npmjs.com/package/react-ui-component-starter)
 [![Dependency Status](https://david-dm.org/Alex1990/react-ui-component-starter.svg?style=flat-square)](https://david-dm.org/Alex1990/react-ui-component-starter)
-[![Coverage Status](https://img.shields.io/coveralls/Alex1990/react-ui-component-starter/master.svg?style=flat-square)](https://coveralls.io/github/Alex1990/react-ui-component-starter?branch=master)
 
 A starter based on webpack ecosystem to develop react components comfortably.
 
