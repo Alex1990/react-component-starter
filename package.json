@@ -1,5 +1,5 @@
 {
-  "name": "react-component-starter",
+  "name": "react-ui-component-starter",
   "version": "0.1.0",
   "description": "A starter based on webpack ecosystem to develop react components comfortably",
   "main": "./lib/index.js",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Alex1990/react-component-starter.git"
+    "url": "git@github.com:Alex1990/react-ui-component-starter.git"
   },
   "scripts": {
     "start": "NODE_ENV=development node ./scripts/server",
