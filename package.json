@@ -29,8 +29,7 @@
     "test:cover": "npm run test -- --coverage",
     "test:CI": "npm run test",
     "test:cover:CI": "npm run test:cover && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "lint": "eslint src",
-    "prepublish": "npm run release"
+    "lint": "eslint src"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
