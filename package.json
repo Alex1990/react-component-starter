@@ -10,10 +10,16 @@
     "type": "git",
     "url": "git@github.com:Alex1990/react-ui-component-starter.git"
   },
+  "files": [
+    "assets",
+    "dist",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "start": "NODE_ENV=development node ./scripts/server",
-    "compile": "rimraf lib && babel -d lib src",
-    "build": "rimraf dist &&  NODE_ENV=production webpack",
+    "compile": "rimraf lib && BABEL_ENV=es5 babel -d lib src --ignore *.spec.js,*.test.js",
+    "build": "rimraf dist && NODE_ENV=production webpack",
     "release": "npm run compile && npm run build",
     "build:examples": "rimraf build && NODE_ENV=production node ./scripts/buildExamples",
     "gh-pages": "npm run build:examples && gh-pages -d build/${npm_package_name}",
@@ -27,6 +33,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^19.0.0",
@@ -85,7 +92,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
+    "last 4 versions",
     "ie >= 9"
   ],
   "jest": {

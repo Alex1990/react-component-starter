@@ -1,7 +1,8 @@
+__mocks__
+__tests__
 .babelrc
 .eslintrc
 .editorconfig
-src
 examples
 scripts
 tests
@@ -13,3 +14,5 @@ coverage
 stats.json
 webpack.config.js
 postcss.config.js
+.travis-ci.yml
+.appveyor.yml

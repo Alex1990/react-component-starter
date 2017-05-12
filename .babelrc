@@ -9,12 +9,24 @@
   ],
   "plugins": [
     ["transform-object-rest-spread"],
-    ["transform-class-properties"],
-    ["react-hot-loader/babel"]
+    ["transform-class-properties"]
   ],
   "env": {
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
+    },
     "test": {
       "plugins": ["transform-es2015-modules-commonjs"]
+    },
+    "es5": {
+      "presets": [
+        "latest",
+        "react"
+      ],
+      "plugins": [
+        ["transform-object-rest-spread"],
+        ["transform-class-properties"]
+      ]
     }
   }
 }
