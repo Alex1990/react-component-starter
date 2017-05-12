@@ -208,26 +208,23 @@ module.exports = function (options) {
     },
     {
       test: /\.less$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
+      use: extractCSS([
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
           },
-          {
-            loader: "postcss-loader",
+        },
+        {
+          loader: "postcss-loader",
+        },
+        {
+          loader: 'less-loader',
+          options: {
+            sourceMap: true,
           },
-          {
-            loader: 'less-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      }),
+        },
+      ]),
     },
     {
       test: /\.(sass|scss)$/,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dice from '../../src';
+import '../../assets/index.less';
 
 class App extends Component {
   render() {
