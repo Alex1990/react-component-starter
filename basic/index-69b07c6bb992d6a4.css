@@ -1,7 +1,6 @@
 .dice-roll {
   text-align: center;
 }
-
 .dice-roll-btn {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -11,30 +10,26 @@
   line-height: 1;
   vertical-align: middle;
   background: darkorange;
-  color: #fff;
+  color: lightyellow;
   border: none;
   cursor: pointer;
 }
-
 .dice-roll-btn:hover {
   box-shadow: 0 1px 6px #999;
 }
-
 .dice-roll-result {
   height: 64px;
   font-size: 64px;
   line-height: 64px;
   vertical-align: middle;
   color: darkcyan;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
-
 .dice-roll-rolling .dice-roll-btn {
   box-shadow: none;
 }
-
 .dice-roll-rolling .dice-roll-result {
   font-size: 0;
 }
 
-/*# sourceMappingURL=index-26ef0dd8489fc816.css.map*/
+/*# sourceMappingURL=index-69b07c6bb992d6a4.css.map*/
