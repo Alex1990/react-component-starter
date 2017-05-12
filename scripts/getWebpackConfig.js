@@ -87,20 +87,24 @@ module.exports = function (options) {
   /**
    * Plugins
    */
-  const re = /^([^\/]+)\/index$/;
-  const exampleDirs = Object.keys(exampleEntry)
-    .map(v => v.match(re)[1])
-    .sort();
   const repo = parseGithubUrl(packageRepositoryUrl);
+  const definedVar = {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    packageName: JSON.stringify(packageName),
+    packageVersion: JSON.stringify(packageVersion),
+    repository: JSON.stringify(repo.repo ? `https://github.com/${repo.repo}` : ''),
+  };
+
+  if (task === 'examples') {
+    const re = /^([^\/]+)\/index$/;
+    const exampleDirs = Object.keys(exampleEntry)
+      .map(v => v.match(re)[1])
+      .sort();
+    definedVar.exampleDirs = JSON.stringify(exampleDirs);
+  }
 
   config.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      exampleDirs: JSON.stringify(exampleDirs),
-      packageName: JSON.stringify(packageName),
-      packageVersion: JSON.stringify(packageVersion),
-      repository: JSON.stringify(repo.repo ? `https://github.com/${repo.repo}` : ''),
-    }),
+    new webpack.DefinePlugin(definedVar),
     new ProgressBarPlugin()
   );
 

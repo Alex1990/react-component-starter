@@ -23,13 +23,14 @@
     "release": "npm run compile && npm run build",
     "build:examples": "rimraf build && NODE_ENV=production node ./scripts/buildExamples",
     "gh-pages": "npm run build:examples && gh-pages -d build/${npm_package_name}",
-    "bundle-analyzer": "NODE_ENV=production webpack --json > stats.json",
+    "bundle-analyzer": "rimraf dist && NODE_ENV=production webpack --json > stats.json",
     "test": "jest",
     "test:watch": "npm run test -- --watch",
     "test:cover": "npm run test -- --coverage",
     "test:CI": "npm run test",
     "test:cover:CI": "npm run test:cover && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "prepublish": "npm run release"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

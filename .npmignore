@@ -16,3 +16,5 @@ webpack.config.js
 postcss.config.js
 .travis-ci.yml
 .appveyor.yml
+*.spec.js
+*.test.js
