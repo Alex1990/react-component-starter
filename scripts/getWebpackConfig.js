@@ -36,16 +36,19 @@ module.exports = function (options) {
   };
 
   if (task === 'examples') {
-    let outputFilename = '[name].js';
-
     if (env.NODE_ENV === 'production') {
-      outputFilename = '[name]-[hash:16].js';
+      config.output = {
+        filename: '[name]-[hash:16].js',
+        path: path.join(root, `build/${packageName}`),
+        publicPath: `/${packageName}/`,
+      };
+    } else {
+      config.output = {
+        filename: '[name].js',
+        path: path.join(root, 'build'),
+        publicPath: '/',
+      };
     }
-    config.output = {
-      filename: outputFilename,
-      path: path.join(root, 'build'),
-      publicPath: './',
-    };
   } else {
     config.output = {
       filename: `${packageName}.js`,

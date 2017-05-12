@@ -1,5 +1,5 @@
 {
-  "name": "dice-roll",
+  "name": "react-component-starter",
   "version": "0.1.0",
   "description": "A starter based on webpack ecosystem to develop react components comfortably",
   "main": "./lib/index.js",
